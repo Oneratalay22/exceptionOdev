@@ -1,19 +1,29 @@
+import java.util.Scanner;
+
 public class Main {
+
+    private static int[] dizi = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+
     public static void main(String[] args) {
-        int[] dizi = {10, 20, 30, 40, 50, 60, 70, 80, 90, 100};
+        // Scanner sınıfı ile kullanıcıdan indeks bilgisini al
+        Scanner scanner = new Scanner(System.in);
 
-        int indeks = 5; // Örnek olarak indeks 5 aldık
+        System.out.print("Lütfen bir indeks girin: ");
+        int indeks = scanner.nextInt();
 
-        System.out.println(dizidenElemanGetir(dizi, indeks));
+        // Girilen indeksteki elemanı veya hata mesajını yazdır
+        System.out.println(indekstekiElemaniGetir(indeks));
+
+        scanner.close();
     }
 
-    public static String dizidenElemanGetir(int[] dizi, int indeks) {
+    public static String indekstekiElemaniGetir(int indeks) {
         try {
-            return "İndeksteki eleman: " + dizi[indeks];
+            // Diziden belirtilen indeksteki elemanı döndür
+            return "Indeks " + indeks + " içindeki eleman: " + dizi[indeks];
         } catch (ArrayIndexOutOfBoundsException e) {
-            return "Hata: Geçersiz indeks, lütfen 0 ile " + (dizi.length - 1) + " arasında bir değer girin.";
-
+            // Hata durumunda bir hata mesajı döndür
+            return "Hata: Indeks " + indeks + " geçersiz. Geçerli indeksler 0 ile " + (dizi.length - 1) + " arasındadır.";
         }
-
     }
 }
